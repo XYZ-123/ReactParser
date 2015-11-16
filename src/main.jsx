@@ -10,7 +10,7 @@ class MainPage extends React.Component
     constructor()
     {
         super();
-        this.state = {sites:["StackOverflow", "GitHub"]};
+        this.state = {sites:["python", ".net"]};
     }
     render()
     {
@@ -32,7 +32,7 @@ class MainPage extends React.Component
 let routes = (<Router>
     <Route component={MainPage} path="/">
         <Route component={Statistics} path="stats"/>
-        <Route component={SingleView} path="/details/:id"/>
+        <Route component={SingleView} path="/details/:lang"/>
     </Route>
 </Router>);
 
