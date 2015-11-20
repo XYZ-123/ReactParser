@@ -1,6 +1,7 @@
 import './SingleView.less';
 import React from 'react';
 import Position from './Position/Position';
+import PropagateActions from '../Actions/PropagateActions';
 window.$ = require('jquery');
 
 export class SingleView extends React.Component
@@ -13,13 +14,17 @@ export class SingleView extends React.Component
     componentDidMount()
     {
         let {lang} = this.props.params;
+        //PropagateActions.propagateStatistics({name:lang,clicksNumber:1});
         this.updateState(lang);
     }
     componentWillReceiveProps(nextProps)
     {
-        debugger;
-        let {lang} = nextProps.params;
-        this.updateState(lang);
+        if(nextProps && nextProps.location && nextProps.location.action === "POP") {
+            let {lang} = nextProps.params;
+            console.log('received props', nextProps);
+            PropagateActions.propagateStatistics({name: lang, clicksNumber: 1});
+            this.updateState(lang);
+        }
     }
     updateState(lang)
     {

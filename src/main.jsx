@@ -1,7 +1,7 @@
 import './Common.less';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Statistics} from "./Statistics/Statistics";
+import Statistics from "./Statistics/Statistics";
 import {SingleView} from "./SingleView/SingleView";
 import {Router, Route, Link} from 'react-router';
 

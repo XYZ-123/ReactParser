@@ -1,10 +1,29 @@
 import './Statistics.less';
+import connectToStores from 'alt/utils/connectToStores';
+import StatisticsStore from '../Stores/StatisticsStore';
 import React from 'react';
 
-export class Statistics extends React.Component
+
+class Statistics extends React.Component
 {
+    constructor(props)
+    {
+        super(props);
+    }
+    static getStores()
+    {
+        return [StatisticsStore];
+    }
+    static getPropsFromStores()
+    {
+        return StatisticsStore.getState();
+    }
     render()
     {
-        return (<div>Hello from Statistics!</div>)
+        debugger;
+        var clicksNodes = this.props.clicks.map((item) =>{return <div>Name:{item.name} Number of clicks:{item.clicksNumber}</div>});
+        return (<div>Hello from Statistics!<br/>{clicksNodes}</div>)
     }
 }
+
+export default connectToStores(Statistics);
